@@ -53,7 +53,7 @@ img {
 .container {
   width: calc(100% - 32px);
   margin: 0 auto;
-/*   outline: 2px solid red; */
+  /* outline: 2px solid red; */
   max-width: 800px;
   /* 800px以上広がらないで固定になる */
 }
