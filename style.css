@@ -1,0 +1,261 @@
+/* common */
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  /* 英字フォントの指定、英字が少し太字になる */
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-weight: normal;
+  color: #22577a;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+p + p {
+  margin-top: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+.btn {
+  display: block;
+  width: 160px;
+  background: #329e00;
+  color: #fff;
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.container {
+  width: calc(100% - 32px);
+  margin: 0 auto;
+  outline: 2px solid red;
+  max-width: 800px;
+  /* 800px以上広がらないで固定になる */
+}
+
+/* header */
+
+header {
+  padding: 16px 0;
+  /* containerにつけなかったのは、今後header内に要素が追加されたときのことを考えて、レイアウトが崩れないように */
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* hero */
+
+.hero {
+  background-color: #99e6ff;
+  background-image: url(MyWalkingApp/img/bg.png);
+  background-repeat: repeat-x;
+  /* x-横 y-縦
+  初期値は縦に敷き詰められる
+  repert-xは横(一本)に敷き詰められる */
+  background-position: center bottom;
+  /* left,rightの選択でx値、
+  top,bottomの選択でy値になる
+  どちらか一つしか指定しなかった場合、もう片方は自動的にcenterとして認識される(省略可) */
+  padding-top: 64px;
+  text-align: center;
+  /* ↑はインライン要素に対して有効で、ブロック要素でおる親をセレクタに指定する。
+  margin: 0 auto;はブロック要素に対して有効で、幅を指定してから中央寄せする。(余白がないとできないよ)
+  inline-blockにはmargin: 0 auto;は効かないので、親のブロック要素にtext-align: center;で指定する。 */
+}
+
+.hero p {
+  margin-top: 8px;
+}
+
+.hero .btn {
+  margin: 64px auto 0;
+  /* text-align: centerで中央揃えにできないからmargin:autoでa要素自体を中央揃えにしてる
+  (今回aの.btnにdisply:block;でブロックボックスの設定してるから)
+  h1,Pは要素の幅は.hero幅いっぱいまである。テキストを中央に寄せただけ */
+}
+
+.hero img {
+  margin-top: 64px;
+  /* .heroのtext-align: center
+  で中央揃えになってる
+  imgはインライン要素でテキストと同じような扱いと考える
+  imgは基本そのままでは使わずdivなどで囲って使い、その親要素に対してtext-align: centerの指定することが多い(margin,paddingをつけたい時にも使えるよ)
+  それか画像自体をブロック要素にしてmargin:0 autoにする方法もある*/
+}
+
+/* features */
+
+.features {
+  padding: 64px 0;
+}
+
+.features h1 {
+  text-align: center;
+  padding-bottom: 64px;
+}
+
+.features .pic {
+  padding: 32px;
+  /* ↑画像を小さくした 
+  imgに直接padding使えないからdivで囲ってあげてる
+  htmlに直接サイズ変更してもいいが、imgをwidth100％とした上で幅を狭めた方が綺麗に見えるし計算もしなくていい*/
+}
+
+.features img {
+  width: 100%;
+  /* ↑.featuresからはみ出さないように */
+}
+
+.features h2 {
+  padding-bottom: 16px;
+}
+
+.features section + section {
+  margin-top: 40px;
+}
+
+/* voices */
+
+.voices {
+  background: #99e6ff;
+  padding: 64px 0;
+}
+
+.voices h1 {
+text-align: center;
+padding-bottom: 64px;
+}
+
+.voices section {
+  background: #fff;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.voices footer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.voices section + section {
+  margin-top: 16px;
+}
+
+/* cll-to-action */
+
+.call-to-action {
+  padding: 64px 0;
+  background-color: #85d8f2;
+  background-image: url(MyWalkingApp/img/bg.png);
+  background-repeat: repeat-x;
+  background-position: center bottom;
+}
+
+.call-to-action h1 {
+  text-align: center;
+  padding-bottom: 64px;
+}
+
+.call-to-action .btn {
+  margin: 0 auto;
+}
+
+/* copylight */
+
+.copylight {
+  background: #323435;
+  padding: 64px 0;
+  text-align: center;
+}
+
+.copylight small {
+  font-size: 16px;
+  color: #eee;
+}
+
+/* large screen */
+
+@media (min-width: 600px) {
+
+  .hero .container {
+    display: flex;
+    align-items: center;
+  }
+
+  .hero .desc,
+  .hero .pic {
+    width: 50%;
+  }
+
+  .hero img {
+    width: calc(100% - 32px);
+    height: auto;
+    /* 初期値はheight:autoだけどhtmlでheightを指定してるから、こっちで上書きしてあげないとhtmlで指定した330pxが反映されちゃう。
+    widthを指定した時に縦横比を同じにするために設定してるよ
+    これしないと画面を横に広げた時に画像が伸びちゃう */
+    margin-top: 0;
+  }
+
+  .features section {
+    /* .container sectionとしないのは下の.voicesの中にも.containerがあるから。
+    あえて名前を統一するのは、後からサイズなど変更するときに楽になってメンテナンスが楽になるのと、バグが対応しやすくなるから */
+    display: flex;
+  }
+
+  .features section:nth-child(odd) {
+    flex-direction: row-reverse;
+  }
+
+  .voices .container {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .voices section + section {
+    margin-top: 0;
+    /* 上の.voices section + section 設定の取り消し
+    .voices sectionだけだと優先度が低くなるから適応されないので、同じ優先度にする必要がある 
+    */
+  }
+
+  .voices section {
+    width: calc((100% - 32px) / 3);
+    /* 親要素(container)100%に対してのwidthの割合設定 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* 上3つの設定は文字数が違くても、p(素晴らしい)とfooter(imgと会社員)の場所を3つとも同じにしたいから */
+  }
+
+}
+
