@@ -1,0 +1,154 @@
+@charset "utf-8";
+
+/* common */
+
+body {
+  margin: 0;
+  font-family: 'Crimson Text', serif;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: normal;
+  margin: 0;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+  /* vertical-align: bottom; */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  opacity: .7;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.container1 {
+  padding: 4%;
+  width: 90vw;
+  /* widthをvwで指定することで、画面幅を基準にした横幅になる */
+  margin: 0 auto;
+  /* outline: 2px solid blue; */
+  /* container1は設定しなくてもよかったかも
+  mainvisualとheaderそれぞれに余白設定した方が、今回のレスポンシブデザインはやりやすかったかな */
+}
+
+.container2 {
+  margin: 0 auto;
+  /* outline: 2px solid red; */
+  padding: 0 4%;
+}
+
+.flex {
+  display: flex;
+  margin-bottom: 60px;
+  align-items: center;
+}
+
+.pic {
+  width: 50%;
+}
+
+.pic img {
+  width: 100%;
+}
+
+.text {
+  width: 50%;
+  padding: 0 70px;
+  box-sizing: border-box;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* .flexにalign-items: center;を設定したほうがシンプル */
+}
+
+.text h1 {
+  margin-bottom: 12px;
+}
+
+.text h2 {
+  margin-bottom: 20px;
+}
+
+/* mainvisual */
+
+.mainvisual img {
+  width: 100%;
+}
+
+/* header */
+
+header {
+  display: flex;
+}
+
+header ul {
+  font-size: 14px;
+  display: flex;
+  gap: 30px;
+  margin-left: 50px;
+  line-height: 36px;
+  /* headerのh1の高さと合わせた */
+}
+
+/* concept */
+
+
+/* work */
+
+.work .flex {
+  flex-direction: row-reverse;
+}
+
+/* footer */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+@media(max-width: 754px) {
+  .container1 {
+    all: unset;
+  }
+
+  header {
+    padding-left: 4%;
+    margin-bottom: 50px;
+  }
+
+  .flex,
+  .work .flex {
+    flex-direction: column;
+  }
+
+  .pic {
+    width: 100%;
+  }
+  
+  .text {
+    width: 100%;
+    display: block;
+    padding: 0;
+  }
+
+}
